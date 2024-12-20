@@ -27,7 +27,7 @@ app.post('/api/event-emulate', (req,res) => {
   // There can be multiple webhooks registered for a single event, so we dont need to trigger event synchronously. 
   setTimeout(async () => {
     const webhookslist = webhooks[type];
-    webhookslist.array.forEach(async element => {
+    webhookslist.forEach(async (element) => {
       const {payloadUrl , secret} = element;
      await axios.post(payloadUrl,data, {
         headers: {
